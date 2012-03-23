@@ -24,10 +24,22 @@ describe NLP::Stemmers::PorterStemmer do
     # Step 2
     test_stemming("feed", "feed")
     test_stemming("agreed", "agree")
-    # test_stemming("plastered", "plaster")
-    # test_stemming("bled", "bled")
-    # test_stemming("motoring", "motor")
-    # test_stemming("sing", "sing")
+    test_stemming("plastered", "plaster")
+    test_stemming("bled", "bled")
+    test_stemming("motoring", "motor")
+    test_stemming("sing", "sing")
+
+    # Step 2 cleanup
+    test_stemming("conflated", "conflate")
+    test_stemming("troubling", "trouble")
+    test_stemming("sized", "size")
+    test_stemming("hopping", "hop")
+    test_stemming("tanned", "tan")
+    test_stemming("falling", "fall")
+    test_stemming("hissing", "hiss")
+    test_stemming("fizzed", "fizz")
+    test_stemming("failing", "fail")
+    test_stemming("filing", "file")
 
   end
 
