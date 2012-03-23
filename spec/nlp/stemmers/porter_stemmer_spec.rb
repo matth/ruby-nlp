@@ -41,6 +41,10 @@ describe NLP::Stemmers::PorterStemmer do
     test_stemming("failing", "fail")
     test_stemming("filing", "file")
 
+    # Step 3
+    test_stemming("happy", "happi")
+    test_stemming("sky", "sky")
+
   end
 
 end
