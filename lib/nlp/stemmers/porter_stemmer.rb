@@ -58,7 +58,7 @@ module NLP
         end
 
         def step3
-          if ends_with("y")
+          if ends_with("y") && sounds_before(@word, "y").include?("V")
             @word = @word[0..-2] + "i"
           end
         end
