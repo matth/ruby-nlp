@@ -13,6 +13,7 @@ module NLP
           unless word.size < 3
             step1
             step2
+            step3
           end
         end
 
@@ -53,6 +54,12 @@ module NLP
             @word = @word[0..-2]
           elsif measure == 1 && sounds(@word)[-3,3] == "CVC" && !(ends_with("w") || ends_with("x") || ends_with("y"))
             @word += "e"
+          end
+        end
+
+        def step3
+          if ends_with("y")
+            @word = @word[0..-2] + "i"
           end
         end
 
