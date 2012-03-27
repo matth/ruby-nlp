@@ -1,6 +1,10 @@
 module NLP
   module Utils
 
+    ##########################################################################
+    # NGRAM GENERATION
+    ##########################################################################
+
     # Converts an enumerable object into n-grams
     #
     # @example Convert list to bigrams
