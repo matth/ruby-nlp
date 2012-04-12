@@ -1,3 +1,5 @@
+require 'nlp/utils/strings'
+
 module NLP
   module Utils
 
@@ -19,10 +21,10 @@ module NLP
     # @return [Enumerable] a list of n-grams
     def ngrams(enumerable, n, padding = false)
       if padding != false
-        p_length   = (n - 1) % enumerable.size
-        enumerable = enumerable + [padding] * p_length
+        p_length   = (n - 1) % enumerable.count
+        enumerable = enumerable.to_a + [padding] * p_length
       end
-      count = [0, enumerable.size - n + 1].max
+      count = [0, enumerable.count - n + 1].max
       count.times.map { |i| enumerable[i...(i+n)] }
     end
 
