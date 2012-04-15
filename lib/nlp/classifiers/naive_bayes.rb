@@ -65,7 +65,7 @@ module NLP
         #        { :class => :china, :score => -5.2621 }
         #       ]
         #
-        # @param [Enumerable] document The document to train on
+        # @param [Enumerable] document The document to classify
         # @return [Array] An ordered array of results, the top one will have the highest score
         def apply(document)
 
@@ -160,14 +160,14 @@ module NLP
         # Apply the classifier to a new document
         #
         # @example
-        #   classifier.apply(:china, %W{ Chinese Chinese Chinese Tokyo Japan })
+        #   classifier.apply(%W{ Chinese Chinese Chinese Tokyo Japan })
         #
         #   #=> [
         #        { :class => :china, :score => -8.1076 },
         #        { :class => :japan, :score => -8.9066 }
         #       ]
         #
-        # @param [Enumerable] document The document to train on
+        # @param [Enumerable] document The document to classify
         # @return [Array] An ordered array of results, the top one will have the highest score
         def apply(document)
 
