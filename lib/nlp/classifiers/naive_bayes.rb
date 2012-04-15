@@ -12,7 +12,7 @@ module NLP
       # Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze,
       # Introduction to Information Retrieval, Cambridge University Press. 2008.
       #
-      # @see {http://nlp.stanford.edu/IR-book/html/htmledition/text-classification-and-naive-bayes-1.html Text classification & Naive Bayes}
+      # @see { http://nlp.stanford.edu/IR-book/html/htmledition/text-classification-and-naive-bayes-1.html Text classification & Naive Bayes }
       #
       # @example
       #   classifier = NLP::Classifiers::NaiveBayes::Bernoulli.new
@@ -118,7 +118,7 @@ module NLP
       # Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze,
       # Introduction to Information Retrieval, Cambridge University Press. 2008.
       #
-      # @see {http://nlp.stanford.edu/IR-book/html/htmledition/text-classification-and-naive-bayes-1.html Text classification & Naive Bayes}
+      # @see {http://nlp.stanford.edu/IR-book/html/htmledition/text-classification-and-naive-bayes-1.html Text classification &amp; Naive Bayes}
       #
       # @example
       #   classifier = NLP::Classifiers::NaiveBayes::Multinomial.new
