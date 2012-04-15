@@ -4,6 +4,10 @@ module NLP
 
   class NgramIndex
 
+    ##########################################################################
+    # CLASS METHODS
+    ##########################################################################
+
     extend NLP::Utils
 
     def self.extract(max, tokens)
@@ -12,27 +16,72 @@ module NLP
       index
     end
 
-    attr_reader :n, :root
+    ##########################################################################
+    # WORD INDEX
+    ##########################################################################
+
+    class WordIndex < NLP::DataStructures::Trie
+
+      def insert(word)
+        @id_counter ||= 0
+        if find(word).nil?
+          super(word, @id_counter += 1)
+          @id_counter
+        else
+          find(word)
+        end
+
+      end
+
+      def find(word)
+        super(word).values.first
+      end
+
+    end
+
+    ##########################################################################
+    # NGRAM FREQUENCY INDEX
+    ##########################################################################
+
+    class NgramFrequencyIndex < NLP::DataStructures::Trie
+
+      def insert(ngram)
+        if find(ngram).nil?
+          super(ngram, 1)
+        else
+          cur_freq = find(ngram)
+          delete_pair(ngram, cur_freq)
+          super(ngram, cur_freq + 1)
+        end
+      end
+
+      def find(ngram)
+        super(ngram).values.first
+      end
+
+    end
+
+    ##########################################################################
+    # INSTANCE METHODS
+    ##########################################################################
+
+    attr_reader :n, :words, :ngrams
 
     def initialize(n)
-      @n    = n
-      @root = Hash.new
+      @n      = n
+      @words  = WordIndex.new
+      @ngrams = NgramFrequencyIndex.new
     end
 
     def add(ngram)
-      node = root
-      ngram[0...n].each do |gram|
-        node = node[gram] ||= { :count => 0 }
-        node[:count] += 1
-      end
+      word_ids = ngram[0...n].map { |w| words.insert(w) }
+      ngrams.insert word_ids
     end
 
     def freq(ngram)
-      node = root
-      ngram.each do |gram|
-        return 0 unless node = node[gram]
-      end
-      node[:count]
+      word_ids = ngram[0...n].map { |w| words.find(w) }
+      return 0 if word_ids.include? nil
+      ngrams.find word_ids
     end
 
   end
